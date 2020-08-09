@@ -131,7 +131,7 @@ open class KeychainPreferences: PreferencesAdapter {
         }
     }
 
-    #if os(iOS)
+    #if os(iOS) && !targetEnvironment(UIKitForMac)
     static let SharedPassword = String(kSecSharedPassword)
     #endif
 
@@ -278,7 +278,7 @@ open class KeychainPreferences: PreferencesAdapter {
         return nil
     }
 
-    #if os(iOS)
+    #if os(iOS) && !targetEnvironment(UIKitForMac)
     /// See SecCreateSharedWebCredentialPassword
     @available(iOS 8.0, *)
     public class func generatePassword() -> String {
